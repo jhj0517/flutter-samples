@@ -62,8 +62,7 @@ class SocialAuthProvider extends ChangeNotifier {
 
     User? firebaseUser;
     try {
-      firebaseUser = (await firebaseAuth.signInWithCredential(
-          credential)).user;
+      firebaseUser = (await firebaseAuth.signInWithCredential(credential)).user;
     } catch (error, stacktrace) {
       debugPrint('Authentication Error : $error\n$stacktrace');
       _setStatus(AuthStatus.authenticateError);
