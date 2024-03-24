@@ -45,7 +45,6 @@ class SocialAuthProvider extends ChangeNotifier {
     }
   }
 
-
   Future<bool> handleGoogleSignIn() async {
     _setStatus(AuthStatus.authenticating);
     GoogleSignInAccount? googleUser = await googleSignIn.signIn();
@@ -75,7 +74,7 @@ class SocialAuthProvider extends ChangeNotifier {
     }
 
     _currentUser = firebaseUser;
-    _setStatus(_status = AuthStatus.authenticated);
+    _setStatus(AuthStatus.authenticated);
     return true;
   }
 
@@ -120,7 +119,7 @@ class SocialAuthProvider extends ChangeNotifier {
   Future<void> handleSignOut() async {
     await firebaseAuth.signOut();
     // Note: Do this to prevent google sign-in from automatically selecting the previous account.
-    // See also : https://www.deepl.com/write#en/Note%20%3A%20Do%20this%20to%20prevent%20to%20google%20automatically%20choose%20previous%20account
+    // See also : https://stackoverflow.com/a/73552210/16626322
     if(await googleSignIn.isSignedIn()){
       await googleSignIn.disconnect();
       await googleSignIn.signOut();
