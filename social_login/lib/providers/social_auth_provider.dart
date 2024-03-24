@@ -81,6 +81,10 @@ class SocialAuthProvider extends ChangeNotifier {
   }
 
   Future<bool> handleAppleSignIn() async {
+    /*
+    * Note : Normally Apple sign-in isn't used in Android, but to enable Apple sign-in in Android, you need to do some steps.
+    * see here : https://firebase.google.com/docs/auth/android/apple?hl=ko#join-the-apple-developer-program
+    * */
     _setStatus(AuthStatus.authenticating);
 
     final appleCredential = await SignInWithApple.getAppleIDCredential(
