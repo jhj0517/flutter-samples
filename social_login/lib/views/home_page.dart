@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         if (user == null){
           return const Text(
             "You are not signed-in.",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           );
         }
 
