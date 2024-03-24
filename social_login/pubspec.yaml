@@ -17,7 +17,7 @@ dependencies:
   firebase_core: ^2.27.1
   google_sign_in: ^6.2.1
   sign_in_with_apple: ^5.0.0
-  social_login_buttons: ^1.0.7
+  social_login_buttons: ^1.0.7 # This is for UI only, not needed.
 
 dev_dependencies:
   flutter_test:
