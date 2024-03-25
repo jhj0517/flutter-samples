@@ -18,7 +18,7 @@ enum GDriveStatus{
 
 class GDriveProvider extends ChangeNotifier {
 
-  static const folderName = "AIBridge";
+  static const folderName = "GDrive_Backup_Sample_Folder";
   static const folderMime = "application/vnd.google-apps.folder";
 
   GDriveStatus _status = GDriveStatus.uninitialized;
@@ -76,9 +76,9 @@ class GDriveProvider extends ChangeNotifier {
       return;
     }
 
-    final folderId =  await _folderId();
-    gDriveFile.parents = [folderId!];
     try{
+      final folderId =  await _folderId();
+      gDriveFile.parents = [folderId!];
       await driveApi!.files.create(
         gDriveFile,
         uploadMedia: Media(localFile.openRead(), localFile.lengthSync()),

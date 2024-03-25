@@ -42,7 +42,14 @@ class _MyHomePageState extends State<MyHomePage> {
               onChanged: (text) {
                 gDriveProvider.setText(text);
               },
+              decoration: InputDecoration(
+                hintText: "Data to save",
+                border: const OutlineInputBorder(),
+                filled: true,
+                fillColor: Colors.grey[200],
+              ),
             ),
+            const SizedBox(height: 30),
             InkWell(
               child: _buildUI("Backup", Icons.backup),
               onTap: () async {
@@ -60,24 +67,26 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-
-  Widget _buildUI(String label, IconData icon){
-    return Row(
-      children: [
-        const SizedBox(width: 10),
-        Icon(
-          icon,
-          size: 24,
-        ),
-        const SizedBox(width: 20),
-        Text(
-          label,
-          style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
+  Widget _buildUI(String label, IconData icon) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 15.0), // Adds padding around the row for a "fatter" appearance
+      child: Row(
+        children: [
+          const SizedBox(width: 10),
+          Icon(
+            icon,
+            size: 30, // Increase the icon size
           ),
-        ),
-      ],
+          const SizedBox(width: 20),
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 20, // Increase the font size
+              fontWeight: FontWeight.bold, // Make the text bold for more impact
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
