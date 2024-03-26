@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         }
 
         if (status == GDriveStatus.downloadComplete){
-          Future.delayed(const Duration(milliseconds: 1000), () {
+          Future.delayed(const Duration(milliseconds: 2000), () {
             Phoenix.rebirth(context);
           });
         }
@@ -124,10 +124,10 @@ class _MyHomePageState extends State<MyHomePage> {
         final GDriveStatus status = gDriveProvider.status;
         String text = 'status-${status.name}';
         if (status==GDriveStatus.downloadComplete){
-          text = 'status-${status.name}. App restart after 1sec..';
+          text = 'status-${status.name}.\nApp restart after 2sec..';
         }
         return Text(
-          "status-${status.name}",
+          text,
           style: const TextStyle(fontSize: 20),
         );
       },
