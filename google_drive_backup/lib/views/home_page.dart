@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 import '../providers/g_drive_provider.dart';
 import '../utils/text_file_manager.dart' as util;
@@ -37,6 +38,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            _buildProgressBar(),
+            _buildStatusText(),
+            const SizedBox(height: 30),
             TextField(
               controller: controller,
               onChanged: (text) {
@@ -51,13 +55,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 30),
             InkWell(
-              child: _buildUI("Backup", Icons.backup),
+              child: _buildButtonUI("Backup", Icons.backup),
               onTap: () async {
                 await gDriveProvider.upload();
               },
             ),
             InkWell(
-              child: _buildUI("Load", Icons.download),
+              child: _buildButtonUI("Load", Icons.download),
               onTap: () async {
                 await gDriveProvider.download();
               },
@@ -67,26 +71,63 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  Widget _buildUI(String label, IconData icon) {
+
+  Widget _buildButtonUI(String label, IconData icon) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0), // Adds padding around the row for a "fatter" appearance
+      padding: const EdgeInsets.symmetric(vertical: 15.0),
       child: Row(
         children: [
           const SizedBox(width: 10),
           Icon(
             icon,
-            size: 30, // Increase the icon size
+            size: 30,
           ),
           const SizedBox(width: 20),
           Text(
             label,
             style: const TextStyle(
-              fontSize: 20, // Increase the font size
-              fontWeight: FontWeight.bold, // Make the text bold for more impact
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildProgressBar(){
+    return Consumer<GDriveProvider>(
+      builder: (context, gDriveProvider, child) {
+        final GDriveStatus status = gDriveProvider.status;
+
+        if (status == GDriveStatus.initialized ||
+            status == GDriveStatus.isOnTask) {
+          return const CircularProgressIndicator(
+            color: Colors.purple,
+          );
+        }
+
+        if (status == GDriveStatus.downloadComplete){
+          Future.delayed(const Duration(milliseconds: 1000), () {
+            Phoenix.rebirth(context);
+          });
+        }
+
+        return const SizedBox.shrink();
+      },
+    );
+  }
+
+  Widget _buildStatusText() {
+    return Consumer<GDriveProvider>(
+      builder: (context, gDriveProvider, child) {
+        final GDriveStatus status = gDriveProvider.status;
+
+        return Text(
+          "status-${status.name}",
+          style: const TextStyle(fontSize: 20),
+        );
+      },
     );
   }
 }
