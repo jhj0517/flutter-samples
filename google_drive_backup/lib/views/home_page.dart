@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 import '../providers/g_drive_provider.dart';
-import '../utils/text_file_manager.dart' as util;
+import '../utils/text_file_manager.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     gDriveProvider = context.read<GDriveProvider>();
     controller = TextEditingController();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      controller.text = await util.readTextFile();
+      controller.text = await LocalTextFile.readFile();
     });
     super.initState();
   }
@@ -43,8 +43,8 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 30),
             TextField(
               controller: controller,
-              onChanged: (text) {
-                gDriveProvider.setText(text);
+              onChanged: (text) async {
+                await LocalTextFile.writeFile(text);
               },
               decoration: InputDecoration(
                 hintText: "Data to save",
@@ -122,7 +122,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Consumer<GDriveProvider>(
       builder: (context, gDriveProvider, child) {
         final GDriveStatus status = gDriveProvider.status;
-
+        String text = 'status-${status.name}';
+        if (status==GDriveStatus.downloadComplete){
+          text = 'status-${status.name}. App restart after 1sec..';
+        }
         return Text(
           "status-${status.name}",
           style: const TextStyle(fontSize: 20),

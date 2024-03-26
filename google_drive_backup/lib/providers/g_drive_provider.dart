@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:googleapis/drive/v3.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:path/path.dart';
+import 'dart:convert';
 
 import '../apis/google_api.dart';
-import '../utils/text_file_manager.dart' as util;
+import '../utils/text_file_manager.dart';
 
 enum GDriveStatus{
   uninitialized,
@@ -22,9 +23,6 @@ class GDriveProvider extends ChangeNotifier {
 
   GDriveStatus _status = GDriveStatus.uninitialized;
   GDriveStatus get status => _status;
-
-  String _value="";
-  String get value => _value;
 
   DriveApi? driveApi;
 
@@ -51,8 +49,7 @@ class GDriveProvider extends ChangeNotifier {
     _setStatus(GDriveStatus.initialized);
     await _setDrive();
 
-    await util.writeTextFile(value);
-    final localFile = await util.getTextFile();
+    final localFile = await LocalTextFile.getFile();
 
     final File gDriveFile = File();
     gDriveFile.name = basename(localFile.absolute.path);
@@ -94,7 +91,7 @@ class GDriveProvider extends ChangeNotifier {
     _setStatus(GDriveStatus.initialized);
     await _setDrive();
 
-    final localFile = await util.getTextFile();
+    final localFile = await LocalTextFile.getFile();
 
     final File gDriveFile = File();
     gDriveFile.name = basename(localFile.absolute.path);
@@ -123,6 +120,7 @@ class GDriveProvider extends ChangeNotifier {
       return;
     }
 
+    await _overwriteLocalFile(downloadedFile);
     _setStatus(GDriveStatus.downloadComplete);
   }
 
@@ -171,13 +169,18 @@ class GDriveProvider extends ChangeNotifier {
     return await driveApi!.files.create(folder);
   }
 
+  Future<void> _overwriteLocalFile(Media downloadedFile) async {
+    final StringBuffer stringBuffer = StringBuffer();
+    await for (var chunk in downloadedFile.stream) {
+      stringBuffer.write(utf8.decode(chunk));
+    }
+    String fileContent = stringBuffer.toString();
+    await LocalTextFile.writeFile(fileContent);
+  }
+
   void _setStatus(GDriveStatus status){
     _status = status;
     notifyListeners();
-  }
-
-  void setText(String value){
-    _value = value;
   }
 
 }
