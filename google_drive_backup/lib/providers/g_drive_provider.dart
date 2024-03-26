@@ -75,9 +75,10 @@ class GDriveProvider extends ChangeNotifier {
       return;
     }
 
+    final folderId =  await _folderId();
+    gDriveFile.parents = [folderId!];
+
     try{
-      final folderId =  await _folderId();
-      gDriveFile.parents = [folderId!];
       await driveApi!.files.create(
         gDriveFile,
         uploadMedia: Media(localFile.openRead(), localFile.lengthSync()),
