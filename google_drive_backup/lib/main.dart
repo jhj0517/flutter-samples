@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +17,11 @@ Future<void> _initFirebase() async {
 
 Future<void> main() async{
   await _initFirebase();
-  runApp(const MyApp());
+  runApp(
+      Phoenix(
+          child: const MyApp()
+      )
+  );
 }
 
 class MyApp extends StatelessWidget {
