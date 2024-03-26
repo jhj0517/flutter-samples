@@ -13,7 +13,8 @@ enum GDriveStatus{
   initialized,
   isOnTask,
   failed,
-  complete,
+  uploadComplete,
+  downloadComplete,
 }
 
 class GDriveProvider extends ChangeNotifier {
@@ -72,7 +73,7 @@ class GDriveProvider extends ChangeNotifier {
         _setStatus(GDriveStatus.failed);
         debugPrint('G-Drive Error : $err');
       }
-      _setStatus(GDriveStatus.complete);
+      _setStatus(GDriveStatus.uploadComplete);
       return;
     }
 
@@ -87,7 +88,7 @@ class GDriveProvider extends ChangeNotifier {
       _setStatus(GDriveStatus.failed);
       debugPrint('G-Drive Error : $err');
     }
-    _setStatus(GDriveStatus.complete);
+    _setStatus(GDriveStatus.uploadComplete);
   }
 
   Future<void> download() async{
@@ -123,7 +124,7 @@ class GDriveProvider extends ChangeNotifier {
       return;
     }
 
-    _setStatus(GDriveStatus.complete);
+    _setStatus(GDriveStatus.downloadComplete);
   }
 
   Future<File?> _isFileExist(String fileName) async {
@@ -170,7 +171,6 @@ class GDriveProvider extends ChangeNotifier {
     folder.mimeType = folderMime;
     return await driveApi!.files.create(folder);
   }
-
 
   void _setStatus(GDriveStatus status){
     _status = status;
