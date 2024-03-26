@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'dart:io' as io;
 import 'package:googleapis/drive/v3.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../apis/google_api.dart';
 import '../utils/text_file_manager.dart' as util;
