@@ -32,9 +32,9 @@ dependencies:
   googleapis: ^13.1.0
   googleapis_auth: ^1.5.1
   http: ^1.1.0
+  flutter_phoenix: ^1.1.1 # To restart the app
   path_provider: ^2.0.14
   provider: ^6.0.5
-  flutter_phoenix: ^1.1.1
 
 dev_dependencies:
   flutter_test:
