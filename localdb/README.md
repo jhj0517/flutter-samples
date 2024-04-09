@@ -1,16 +1,7 @@
-# localdb
+# Demo
+![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/d28834a3-0ac3-42d5-8319-838f85354d99)
 
-A new Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Medium Post
+For more details about this project, please check out : 
+- [Basic LocalDB Usage Practice in Flutter](https://medium.com/@developerjo0517/basic-localdb-usage-practice-in-flutter-7de0edc6e542)
