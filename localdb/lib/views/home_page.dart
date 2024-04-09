@@ -17,8 +17,8 @@ class _HomePageState extends State<HomePage> {
   List<User> _users = []; // List to store retrieved users
 
   // Text Editing Controllers for user input
-  final _userIdController = TextEditingController();
   final _userNameController = TextEditingController();
+  final _userIdController = TextEditingController();
   final _profileURLController = TextEditingController();
 
   @override
@@ -35,8 +35,8 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _addUser() async {
     // Get user data from Text Editing Controllers
-    final userId = _userIdController.text;
     final userName = _userNameController.text;
+    final userId = _userIdController.text;
     final profileURL = _profileURLController.text;
 
     final user = User(
@@ -62,40 +62,54 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Local Database Example'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 20.0),
-            // User input section
-            TextField(
-              controller: _userIdController,
-              decoration: const InputDecoration(labelText: 'User ID'),
-            ),
-            TextField(
-              controller: _userNameController,
-              decoration: const InputDecoration(labelText: 'User Name'),
-            ),
-            TextField(
-              controller: _profileURLController,
-              decoration: const InputDecoration(labelText: 'Profile URL'),
-            ),
-            const SizedBox(height: 10.0),
-            ElevatedButton(
-              onPressed: _addUser,
-              child: const Text('Add User'),
-            ),
-            ListView.builder(
+      body: Column(
+        children: [
+          const SizedBox(height: 20.0),
+          // User input section
+          TextField(
+            controller: _userNameController,
+            decoration: const InputDecoration(labelText: 'User Name'),
+          ),
+          TextField(
+            controller: _userIdController,
+            decoration: const InputDecoration(labelText: 'User ID'),
+          ),
+          TextField(
+            controller: _profileURLController,
+            decoration: const InputDecoration(labelText: 'Profile URL'),
+          ),
+          const SizedBox(height: 10.0),
+          ElevatedButton(
+            onPressed: _addUser,
+            child: const Text('Add User'),
+          ),
+          Expanded(
+            child: ListView.builder(
               shrinkWrap: true,
               itemCount: _users.length,
               itemBuilder: (context, index) {
                 final user = _users[index];
                 return ListTile(
-                  title: Text(user.name),
+                  title: Text('Name: ${user.name}'),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('ID: ${user.userId}'),
+                      Text('Profile URL: ${user.profileUrl}'),
+                    ],
+                  ),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.delete),
+                    onPressed: () async {
+                      await db.deleteUser(user); // Assuming deleteUser method is implemented correctly
+                      _getUsers(); // Refresh the list after deleting a user
+                    },
+                  ),
                 );
               },
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
