@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   late MyDB db;
-  List<User> _users = []; // List to store retrieved users
+  List<User> _users = [];
 
   // Text Editing Controllers for user input
   final _userNameController = TextEditingController();
@@ -34,15 +34,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _addUser() async {
-    // Get user data from Text Editing Controllers
-    final userName = _userNameController.text;
-    final userId = _userIdController.text;
-    final profileURL = _profileURLController.text;
-
     final user = User(
-      userId: userId,
-      name: userName,
-      profileUrl: profileURL,
+      userId: _userIdController.text,
+      name: _userNameController.text,
+      profileUrl: _profileURLController.text,
       isSubscribed: false,
     );
 
@@ -54,6 +49,11 @@ class _HomePageState extends State<HomePage> {
     _userIdController.text = '';
     _userNameController.text = '';
     _profileURLController.text = '';
+  }
+
+  Future<void> _deleteUser(User user) async {
+    await db.deleteUser(user);
+    _getUsers();
   }
 
   @override
@@ -100,10 +100,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete),
-                    onPressed: () async {
-                      await db.deleteUser(user); // Assuming deleteUser method is implemented correctly
-                      _getUsers(); // Refresh the list after deleting a user
-                    },
+                    onPressed: () => _deleteUser(user)
                   ),
                 );
               },
