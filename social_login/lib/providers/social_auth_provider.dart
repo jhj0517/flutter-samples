@@ -32,7 +32,18 @@ class SocialAuthProvider extends ChangeNotifier {
   SocialAuthProvider({
     required this.firebaseAuth,
     required this.googleSignIn,
-  }){}
+  }){
+    firebaseAuth.authStateChanges().listen((User? user) {
+      if (user == null) {
+        _currentUser = null;
+        _status = AuthStatus.uninitialized;
+      } else {
+        _currentUser = user;
+        _status = AuthStatus.authenticated;
+      }
+      notifyListeners();
+    });
+  }
 
   Future<void> handleSocialSignIn(SocialLogins social) async {
     switch(social){
