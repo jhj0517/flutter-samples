@@ -34,13 +34,7 @@ class SocialAuthProvider extends ChangeNotifier {
     required this.googleSignIn,
   }){
     firebaseAuth.authStateChanges().listen((User? user) {
-      if (user == null) {
-        _currentUser = null;
-        _status = AuthStatus.uninitialized;
-      } else {
-        _currentUser = user;
-        _status = AuthStatus.authenticated;
-      }
+      _currentUser = user;
       notifyListeners();
     });
   }
