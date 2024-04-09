@@ -80,4 +80,9 @@ class MyDB {
     );
   }
 
+  Future<void> closeDB() async {
+    final db = await database;
+    await db.close();
+  }
+
 }
