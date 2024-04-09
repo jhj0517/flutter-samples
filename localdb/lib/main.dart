@@ -7,7 +7,10 @@ import 'localdb/my_db.dart';
 
 void main() {
   runApp(
-      const App()
+    DevicePreview(
+      enabled: true,
+      builder: (context) => const App(),
+    ),
   );
 }
 
@@ -25,6 +28,8 @@ class App extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
         home: const HomePage(),
         theme: ThemeData(
           brightness: Brightness.light,
