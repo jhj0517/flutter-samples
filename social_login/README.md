@@ -1,3 +1,6 @@
-# social_login
+# Demo
+![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/9a0de492-4044-4629-b437-80cfafdedd62)
 
-![Social_Logins2](https://github.com/jhj0517/FlutterPractices/assets/97279763/1e7453a6-39cc-4177-8c37-81e6ef2b8087)
+# Medium Post
+For more details about this project, please check out : 
+- [Social Logins in Flutter](https://medium.com/@developerjo0517/social-logins-in-flutter-9cc990b58b7b)
