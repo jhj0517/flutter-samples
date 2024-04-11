@@ -1,3 +1,6 @@
+### Languages
+[한국어](https://github.com/jhj0517/FlutterPractices/blob/master/README.md),  [English](https://github.com/jhj0517/FlutterPractices/blob/master/README_en.md)
+
 # FlutterPractices
 연습용 플러터 샘플 프로젝트들입니다. 각 프로젝트 폴더 안에 미디엄 포스트 링크가 함께 있습니다.
 
