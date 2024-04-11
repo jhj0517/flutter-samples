@@ -1,7 +1,7 @@
 # FlutterPractices
 연습용 플러터 샘플 프로젝트들입니다. 각 프로젝트 폴더 안에 미디엄 포스트 링크가 함께 있습니다.
 
-### Sample
+### Samples
 - [google_drive_backup](https://github.com/jhj0517/FlutterPractices/tree/master/google_drive_backup) : 구글 드라이브를 통한 로컬 DB 백업 & 로드가 구현된 예시입니다.
   <details> <summary>GIF</summary> 
   
