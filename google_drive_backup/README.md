@@ -1,16 +1,8 @@
-# google_drive_backup
+# Demo
+![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/870f02ed-863f-46e5-823f-037cdaffeaa5)
 
-A new Flutter project.
+# Medium Post
+For more details about this project, please check out : 
 
-## Getting Started
+- [Backup and Load Data with Google Drive in Flutter](https://medium.com/@developerjo0517/backup-and-load-data-with-google-drive-in-flutter-1d901fd38f70)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
