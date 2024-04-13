@@ -32,15 +32,18 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ThemeProvider>(
-          create: (context) => ThemeProvider(
-            prefs: prefs
-          )
+          create: (context) => ThemeProvider()
         ),
       ],
-      child: const MaterialApp(
-        title: 'Light/Night Theme Sample',
-        home: MyHomePage(),
-      ),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'Light/Night Theme Sample',
+            theme: themeProvider.themeColors,
+            home: const MyHomePage(),
+          );
+        },
+      )
     );
   }
 }
