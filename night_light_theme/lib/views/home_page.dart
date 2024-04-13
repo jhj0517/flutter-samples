@@ -23,15 +23,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    themeProvider = context.watch<ThemeProvider>();
-    final attrs = themeProvider.themeAttrs;
     return Scaffold(
-      backgroundColor: attrs.backgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: attrs.backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         title: Text(
           "Light/Night Theme Sample",
-          style: TextStyle(color: attrs.fontColor),
+          style: TextStyle(color: Theme.of(context).colorScheme.primary),
         ),
         elevation: 4.0,
       ),
@@ -40,10 +38,10 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              attrs.themeName,
+              themeProvider.attrs.themeName,
               style: GoogleFonts.fredoka(
                 textStyle: TextStyle(
-                  color: attrs.fontColor,
+                  color: Theme.of(context).colorScheme.primary,
                   fontSize: 24,
                   fontWeight: FontWeight.bold
                 ),
@@ -51,9 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             Icon(
-              attrs.themeIcon,
+              themeProvider.attrs.themeIcon,
               size: 100,
-              color: attrs.fontColor,
+              color: Theme.of(context).colorScheme.primary,
             ),
             const SizedBox(height: 20),
             ElevatedButton(
