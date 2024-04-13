@@ -1,16 +1,6 @@
-# night_light_theme
+# Demo
+![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/7f331608-1ce8-4e9e-b271-a672f14dd2e4)
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Medium Post
+For more details about this project, please check out : 
+- [Implementing Dark Theme & Light Theme in Flutter](https://medium.com/@developerjo0517/implementing-dark-theme-light-theme-in-flutter-41fb0b05e015)
