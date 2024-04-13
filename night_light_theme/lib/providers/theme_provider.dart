@@ -4,15 +4,15 @@ class ThemeProvider extends ChangeNotifier {
 
   ThemeProvider(){}
 
-  ThemeData _themeColors = ThemeColors.light;
-  ThemeData get themeColors => _themeColors;
+  ThemeData _theme = ThemeColors.light;
+  ThemeData get theme => _theme;
 
   ThemeAttrs _attrs = LightThemeAttrs();
   ThemeAttrs get attrs => _attrs;
 
   void toggleTheme() {
-    bool isLight = _themeColors == ThemeColors.light;
-    _themeColors = isLight ? ThemeColors.dark : ThemeColors.light;
+    bool isLight = _theme == ThemeColors.light;
+    _theme = isLight ? ThemeColors.dark : ThemeColors.light;
     _attrs = isLight ? DarkThemeAttrs() : LightThemeAttrs();
 
     notifyListeners();
