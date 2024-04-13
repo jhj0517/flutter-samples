@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'views/home_page.dart';
 
 Future<SharedPreferences> _initSharedPreference() async {
+  WidgetsFlutterBinding.ensureInitialized();
   return await SharedPreferences.getInstance();
 }
 
