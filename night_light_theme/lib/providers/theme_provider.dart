@@ -22,7 +22,7 @@ class ThemeProvider extends ChangeNotifier {
   Themes? _them;
   Themes? get theme => _them;
 
-  ThemeColors get themeColors => _getThemeColors();
+  ThemeAttrs get themeAttrs => _getThemeAttrs();
 
   void toggleTheme() {
     _them = _them == Themes.light ? Themes.dark : Themes.light;
@@ -39,7 +39,7 @@ class ThemeProvider extends ChangeNotifier {
     prefs.setInt(AppConstants.themeKey, _them!.index);
   }
 
-  ThemeColors _getThemeColors() {
+  ThemeAttrs _getThemeAttrs() {
     return _them == Themes.light
         ? LightTheme()
         : DarkTheme();
@@ -47,21 +47,31 @@ class ThemeProvider extends ChangeNotifier {
 
 }
 
-abstract class ThemeColors {
+abstract class ThemeAttrs {
   Color get backgroundColor;
   Color get fontColor;
+  String get themeName;
+  IconData get themeIcon;
 }
 
-class LightTheme implements ThemeColors {
+class LightTheme implements ThemeAttrs {
   @override
   Color get backgroundColor => const Color(0xffffffff);
   @override
   Color get fontColor => const Color(0xFF000000);
+  @override
+  String get themeName => "Light Theme";
+  @override
+  IconData get themeIcon => Icons.light_mode_outlined;
 }
 
-class DarkTheme implements ThemeColors {
+class DarkTheme implements ThemeAttrs {
   @override
   Color get backgroundColor => const Color(0xff000000);
   @override
   Color get fontColor => const Color(0xFFFFFFFF);
+  @override
+  String get themeName => "Dark Theme";
+  @override
+  IconData get themeIcon => Icons.nights_stay;
 }
