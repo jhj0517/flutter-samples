@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              themeProvider.attrs.themeName,
+              themeProvider.attrs.name,
               style: GoogleFonts.fredoka(
                 textStyle: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             const SizedBox(height: 20),
             Icon(
-              themeProvider.attrs.themeIcon,
+              themeProvider.attrs.icon,
               size: 100,
               color: Theme.of(context).colorScheme.primary,
             ),

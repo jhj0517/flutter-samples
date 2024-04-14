@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         builder: (context, themeProvider, child) {
           return MaterialApp(
             title: 'Light/Night Theme Sample',
-            theme: themeProvider.attrs.themeColors,
+            theme: themeProvider.attrs.colors,
             home: const MyHomePage(),
           );
         },

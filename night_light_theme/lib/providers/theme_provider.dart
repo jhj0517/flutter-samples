@@ -17,7 +17,7 @@ class ThemeProvider extends ChangeNotifier {
   ThemeAttrs get attrs => _attrs;
 
   Future<void> toggleTheme() async {
-    bool isLight = attrs.themeMode == ThemeModes.light;
+    bool isLight = attrs.mode == ThemeModes.light;
     _attrs = isLight ? DarkThemeAttrs() : LightThemeAttrs();
     _saveTheme();
     notifyListeners();
@@ -30,7 +30,7 @@ class ThemeProvider extends ChangeNotifier {
   }
 
   Future<void> _saveTheme() async {
-    prefs.setInt(AppConstants.themeKey, attrs.themeMode.index);
+    prefs.setInt(AppConstants.themeKey, attrs.mode.index);
   }
 
 }
@@ -42,21 +42,21 @@ enum ThemeModes{
 
 // Attribute class for other things instead of colors
 abstract class ThemeAttrs {
-  ThemeModes get themeMode;
-  String get themeName;
-  IconData get themeIcon;
-  ThemeData get themeColors;
+  ThemeModes get mode;
+  String get name;
+  IconData get icon;
+  ThemeData get colors;
 }
 
 class LightThemeAttrs implements ThemeAttrs {
   @override
-  ThemeModes get themeMode => ThemeModes.light;
+  ThemeModes get mode => ThemeModes.light;
   @override
-  String get themeName => "Light Theme";
+  String get name => "Light Theme";
   @override
-  IconData get themeIcon => Icons.light_mode_outlined;
+  IconData get icon => Icons.light_mode_outlined;
   @override
-  ThemeData get themeColors => ThemeData(
+  ThemeData get colors => ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     colorScheme: const  ColorScheme.light(
@@ -69,13 +69,13 @@ class LightThemeAttrs implements ThemeAttrs {
 
 class DarkThemeAttrs implements ThemeAttrs {
   @override
-  ThemeModes get themeMode => ThemeModes.dark;
+  ThemeModes get mode => ThemeModes.dark;
   @override
-  String get themeName => "Dark Theme";
+  String get name => "Dark Theme";
   @override
-  IconData get themeIcon => Icons.nights_stay;
+  IconData get icon => Icons.nights_stay;
   @override
-  ThemeData get themeColors => ThemeData(
+  ThemeData get colors => ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
     colorScheme: const ColorScheme.dark(
