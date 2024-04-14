@@ -26,7 +26,7 @@
 
   </details>
 
-- [night_light_theme](https://github.com/jhj0517/FlutterPractices/tree/master/night_light_theme) : 다크 테마 & 라이트 테마 토글이 구현된 샘플입니다.
+- [night_light_theme](https://github.com/jhj0517/FlutterPractices/tree/master/night_light_theme) : 다크 테마 & 라이트 테마 토글이 구현된 샘플입니다. `SharedPreference` 로 테마를 저장하고 불러옵니다.
   <details> <summary>GIF</summary> 
   
   ![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/7f331608-1ce8-4e9e-b271-a672f14dd2e4)
