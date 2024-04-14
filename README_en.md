@@ -23,7 +23,7 @@ Collection of Flutter sample projects. Each project folder contains a link to a 
 
   </details>
 
-- [night_light_theme](https://github.com/jhj0517/FlutterPractices/tree/master/night_light_theme) : Togglable Dark & Light Them.
+- [night_light_theme](https://github.com/jhj0517/FlutterPractices/tree/master/night_light_theme) : Togglable Dark & Light Them. It saves & loads the theme via `SharedPreference`. 
   <details> <summary>GIF</summary> 
   
   ![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/7f331608-1ce8-4e9e-b271-a672f14dd2e4)
