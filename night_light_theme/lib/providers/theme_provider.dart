@@ -40,7 +40,7 @@ enum ThemeModes{
   dark
 }
 
-// Attribute class for other things instead of colors
+// Attribute class for other things not just colors
 abstract class ThemeAttrs {
   ThemeModes get mode;
   String get name;
