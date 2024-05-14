@@ -12,6 +12,7 @@ import '../../providers/providers.dart';
 import '../widgets/common/common.dart';
 import 'widgets/picked_image.dart';
 import 'widgets/pick_image_button.dart';
+import 'widgets/meta_data_input.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -68,13 +69,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const NormalAppBar(title: "Modify PNG Metadata Sample"),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 10),
             PickedImage(image: _image),
             const SizedBox(height: 20),
-            PickImageButton(onPressed: _pickImage)
+            PickImageButton(onPressed: _pickImage),
+            const SizedBox(height: 40),
+            MetaDataInput(onComplete: (input){})
           ],
         )
       )
