@@ -16,7 +16,7 @@ dependencies:
 
   # Image
   path_provider: ^2.0.14 # for temp directory
-  image_picker: 0.8.7
+  image_picker: ^1.1.1
   png_chunks_encode: ^1.0.0
   png_chunks_extract: ^1.0.2
   image_gallery_saver: ^2.0.3
