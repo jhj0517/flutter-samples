@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:modify_png_metadata/presentation/views/home/widgets/meta_data_output.dart';
 import 'package:modify_png_metadata/repositories/chunk_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -29,6 +30,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late HomeProvider homeProvider;
   File? _image;
+  String? _metadata;
 
   @override
   void initState() {
@@ -79,7 +81,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 20),
             PickImageButton(onPressed: _pickImage),
             const SizedBox(height: 40),
-            MetaDataInput(onComplete: (input){})
+            MetaDataInput(onComplete: (input){}),
+            const SizedBox(height: 10),
+            MetaDataOutput(metadata: _metadata),
           ],
         )
       )
