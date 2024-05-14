@@ -49,12 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: NormalAppBar(title: "Modify PNG Metadata Sample"),
+      appBar: const NormalAppBar(title: "Modify PNG Metadata Sample"),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const PickedImage(),
+            PickedImage(image: _image),
           ],
         )
       )
