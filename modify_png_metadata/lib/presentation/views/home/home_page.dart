@@ -14,12 +14,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  late ThemeProvider themeProvider;
   late HomeProvider homeProvider;
 
   @override
   void initState() {
-    themeProvider = context.read<ThemeProvider>();
     homeProvider = context.read<HomeProvider>();
     init();
     super.initState();
@@ -36,7 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: NormalAppBar(title: Intl.message("appTitle")),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

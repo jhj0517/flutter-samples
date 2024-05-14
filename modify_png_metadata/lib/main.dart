@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
-import 'generated/l10n.dart';
 import 'presentation/views/views.dart';
 import 'presentation/providers/providers.dart';
-import 'data/repositories/repositories.dart';
+import 'repositories/exif_repository.dart';
+import 'repositories/chunk_repository.dart';
 import 'di/dependency_injection.dart';
 
 Future<void> main() async {
@@ -24,24 +23,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<ThemeProvider>(
-            create: (context) => ThemeProvider(
-                prefs: locator.get<SharedPreferences>()
-            )
-        ),
         ChangeNotifierProvider<HomeProvider>(
             create: (context) => HomeProvider(
+              exifRepository: locator<ExifRepository>(),
+              chunkRepository: locator<ChunkRepository>()
             )
         ),
       ],
-      child: Consumer<ThemeProvider>(
-        builder: (context, themeProvider, child) {
-          return MaterialApp(
-            title: 'Modify PNG Metadata',
-            theme: themeProvider.attrs.colors,
-            home: const MyHomePage(),
-          );
-        },
+      child: const MaterialApp(
+        title: 'Modify PNG Metadata',
+        home: MyHomePage(),
       )
     );
   }
