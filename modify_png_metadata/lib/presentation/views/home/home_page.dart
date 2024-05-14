@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 
 import '../../providers/providers.dart';
 import '../widgets/common/common.dart';
-import 'widgets/memo_tile.dart';
-import 'widgets/memo_input_field.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -33,7 +31,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> init() async{
-    homeProvider.readMemos();
   }
 
   @override

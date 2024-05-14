@@ -23,35 +23,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider<ThemeProvider>(
-              create: (context) => ThemeProvider(
-                  prefs: locator.get<SharedPreferences>()
-              )
-          ),
-          ChangeNotifierProvider<HomeProvider>(
-              create: (context) => HomeProvider(
-                memoRepository: locator.get<MemoRepository>(),
-                binanceRepository: locator.get<BinanceRepository>()
-              )
-          ),
-        ],
-        child: Consumer<ThemeProvider>(
-          builder: (context, themeProvider, child) {
-            return MaterialApp(
-              title: 'Flutter MVVM Provider Template',
-              localizationsDelegates: const [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-                GlobalCupertinoLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              theme: themeProvider.attrs.colors,
-              home: const MyHomePage(),
-            );
-          },
-        )
+      providers: [
+        ChangeNotifierProvider<ThemeProvider>(
+            create: (context) => ThemeProvider(
+                prefs: locator.get<SharedPreferences>()
+            )
+        ),
+        ChangeNotifierProvider<HomeProvider>(
+            create: (context) => HomeProvider(
+            )
+        ),
+      ],
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            title: 'Modify PNG Metadata',
+            theme: themeProvider.attrs.colors,
+            home: const MyHomePage(),
+          );
+        },
+      )
     );
   }
 }
