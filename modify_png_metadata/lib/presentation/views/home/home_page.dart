@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:modify_png_metadata/repositories/chunk_repository.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:mime/mime.dart';
 import 'package:intl/intl.dart';
 
 import '../../../di/dependency_injection.dart';
@@ -17,6 +18,10 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
+}
+
+enum PossibleMimes{
+  png
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -37,9 +42,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _pickImage() async {
     final picker = ImagePicker();
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+
+    final mime = lookupMimeType(pickedFile?.path ?? "");
+    if (mime == null || !mime.startsWith("image/png")) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('The file is not PNG'),
+        ),
+      );
+      return;
+    }
 
     if (pickedFile != null) {
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
       setState(() {
         _image = File(pickedFile.path);
       });
