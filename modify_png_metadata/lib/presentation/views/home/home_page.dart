@@ -55,6 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             PickedImage(image: _image),
+            const SizedBox(height: 20),
+            PickImageButton(onPressed: _pickImage)
           ],
         )
       )

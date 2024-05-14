@@ -10,9 +10,26 @@ class PickImageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       onPressed: onPressed,
-      child: const Text('Pick Image'),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8), // Rounded corners
+        ),
+        textStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: Colors.white
+        ),
+      ),
+      child: const Text(
+        'Pick Image',
+        style: TextStyle(
+          color: Colors.white
+        ),
+      ),
     );
   }
 
