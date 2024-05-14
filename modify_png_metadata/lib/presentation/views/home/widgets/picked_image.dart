@@ -24,7 +24,15 @@ class PickedImage extends StatelessWidget {
       );
     }
 
-    return Image.file(image!, height: 200);
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: Image.file(
+        image!,
+        fit: BoxFit.cover,
+        height: 200,
+        width: 200,
+      ),
+    );
   }
 }
 
