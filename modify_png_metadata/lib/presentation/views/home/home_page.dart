@@ -44,28 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const SizedBox(height: 20),
-          OutlinedButton(
-              onPressed: () async {
-                await homeProvider.fetchOrderBook(symbol: "BTCUSDT");
-                debugPrint("TEST: ${homeProvider.response!.toJson()}");
-              },
-              child: const Text("DEBUG RETROFIT")
-          ),
-          const SizedBox(height: 20),
-          const MemoInputField(),
-          Consumer<HomeProvider>(builder: (context, homeProvider, child) {
-            return Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: homeProvider.memos.length,
-                itemBuilder: (context, index) {
-                  final memo = homeProvider.memos[index];
-                  return MemoTile(memo: memo);
-                },
-              ),
-            );
-          }),
+
         ],
       )
     );
