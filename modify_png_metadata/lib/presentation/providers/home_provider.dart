@@ -13,6 +13,9 @@ class HomeProvider extends ChangeNotifier {
   File? _image;
   File? get image => _image;
 
+  List<Map<String, dynamic>>? _chunks;
+  List<Map<String, dynamic>>? get chunks => _chunks;
+
   List<Map<String, dynamic>>? _metadata;
   List<Map<String, dynamic>>? get metadata => _metadata;
 
@@ -29,6 +32,7 @@ class HomeProvider extends ChangeNotifier {
       notifyListeners();
 
       final blob = await ImageService.toBLOB(imageFile: pickedFile);
+      _chunks = PngChunkService.read(BLOB: blob);
       _metadata = PngChunkService.gettEXt(BLOB: blob);
       notifyListeners();
       return true;
@@ -38,14 +42,13 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<bool> saveWithMetaData({
-    required List<Map<String, dynamic>>? chunk,
     required String text,
   }) async {
-    if (chunk==null){
+    if (chunks==null){
       return false;
     }
 
-    final newChunk = PngChunkService.addtEXt(chunk: chunk, text: text);
+    final newChunk = PngChunkService.addtEXt(chunk: chunks!, text: text);
     await ImageService.saveWithChunk(chunk: newChunk);
     notifyListeners();
     return true;
