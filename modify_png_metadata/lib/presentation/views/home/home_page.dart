@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NormalAppBar(title: "Modify PNG Metadata Sample"),
+      appBar: const NormalAppBar(title: "Modify PNG Metadata"),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
