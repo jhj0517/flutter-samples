@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MetaDataInput extends StatefulWidget {
-  final void Function(String) onComplete;
+  final Future<void> Function(String) onComplete;
 
   const MetaDataInput({
     super.key,
