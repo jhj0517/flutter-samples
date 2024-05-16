@@ -12,7 +12,7 @@ class MetaDataOutput extends StatelessWidget {
   Widget build(BuildContext context) {
     final metadata = context.select<HomeProvider, List<Map<String, dynamic>>?>((provider) => provider.metadata);
     return Text(
-      "$metadata" ?? "",
+      "$metadata",
       style: const TextStyle(fontSize: 20, color: Colors.grey),
     );
   }
