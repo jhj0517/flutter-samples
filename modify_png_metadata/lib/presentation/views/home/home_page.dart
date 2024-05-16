@@ -1,16 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:modify_png_metadata/core/services/image_service.dart';
-import 'package:modify_png_metadata/core/services/png_chunk_service.dart';
 import 'package:modify_png_metadata/presentation/views/home/widgets/meta_data_output.dart';
-import 'package:modify_png_metadata/repositories/chunk_repository.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:mime/mime.dart';
-import 'package:intl/intl.dart';
 
-import '../../../di/dependency_injection.dart';
 import '../../providers/providers.dart';
 import '../widgets/common/common.dart';
 import 'widgets/picked_image.dart';
