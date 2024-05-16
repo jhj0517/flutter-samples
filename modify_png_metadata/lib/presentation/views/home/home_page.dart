@@ -64,11 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 10),
+            const SizedBox(height: 50),
             const PickedImage(),
             const SizedBox(height: 20),
             PickImageButton(onPressed: _pickImage),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
             MetaDataInput(onComplete: (input) => _addtEXtMetaData(input)),
             const SizedBox(height: 10),
             const MetaDataOutput(), // Shows only `tEXt` chunk metadata.
