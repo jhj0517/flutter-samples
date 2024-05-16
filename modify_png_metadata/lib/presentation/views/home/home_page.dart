@@ -53,17 +53,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _addtEXtMetaData(String text) async {
-    debugPrint("text: $text");
     if (homeProvider.image == null) {
       _showSnackBar('Select the image first');
       return;
     }
 
-    final success = await homeProvider.saveWithMetaData(
-      chunk: homeProvider.metadata,
-      text: text,
-    );
-
+    final success = await homeProvider.saveWithMetaData(text: text);
     _showSnackBar(success ? 'Image has been saved with new metadata' : 'Failed to save image with new metadata');
   }
 
