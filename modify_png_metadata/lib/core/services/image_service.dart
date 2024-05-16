@@ -1,9 +1,10 @@
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:path/path.dart' as p;
+import 'package:png_chunks_encode/png_chunks_encode.dart' as pngEncode;
 
 class ImageService{
 
@@ -34,6 +35,17 @@ class ImageService{
       filePath,
       name: fileName,
     );
+  }
+
+  static Future<void> saveWithChunk({
+    required List<Map<String, dynamic>> chunk,
+  }) async {
+    final newBuffer = pngEncode.encodeChunks(chunk);
+    final file = File(p.join(Directory.systemTemp.path, 'tempimage.png'));
+    await file.create();
+    await file.writeAsBytes(newBuffer);
+
+    await saveToGallery(filePath: file.path);
   }
 
 }
