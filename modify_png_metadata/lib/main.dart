@@ -4,8 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'presentation/views/views.dart';
 import 'presentation/providers/providers.dart';
-import 'repositories/exif_repository.dart';
-import 'repositories/chunk_repository.dart';
 import 'di/dependency_injection.dart';
 
 Future<void> main() async {
