@@ -7,9 +7,7 @@ import 'package:intl/intl.dart';
 
 class ImageService{
 
-  static Future<File?> pickImage({
-    required BuildContext context
-  }) async {
+  static Future<File?> pickImage() async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(
       source: ImageSource.gallery,
