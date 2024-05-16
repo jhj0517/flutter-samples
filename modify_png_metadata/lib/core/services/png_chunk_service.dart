@@ -20,7 +20,14 @@ class PngChunkService{
   static List<Map<String, dynamic>>? gettEXt({
     required List<Map<String, dynamic>> chunk
   }) {
-    return chunk.where((c) => c["name"]=="tEXt").toList();
+    List<Map<String, dynamic>> tEXt = chunk.where((c) => c["name"]=="tEXt").toList();
+    if (tEXt.isEmpty){
+      return null;
+    }
+
+    final decoded = utf8.decode(tEXt[0]["data"]);
+    tEXt[0]["data"] = decoded;
+    return tEXt;
   }
 
 
