@@ -24,10 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<HomeProvider>(
-            create: (context) => HomeProvider(
-              exifRepository: locator<ExifRepository>(),
-              chunkRepository: locator<ChunkRepository>()
-            )
+            create: (context) => HomeProvider()
         ),
       ],
       child: const MaterialApp(

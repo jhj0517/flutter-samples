@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:modify_png_metadata/core/services/image_service.dart';
+import 'package:modify_png_metadata/core/services/png_chunk_service.dart';
 import 'package:modify_png_metadata/presentation/views/home/widgets/meta_data_output.dart';
 import 'package:modify_png_metadata/repositories/chunk_repository.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late HomeProvider homeProvider;
   File? _image;
-  String? _metadata;
+  List<Map<String, dynamic>>? _chunk;
 
   @override
   void initState() {
@@ -44,27 +46,25 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _pickImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.pickImage(
-      source: ImageSource.gallery,
-    );
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-    final mime = lookupMimeType(pickedFile?.path ?? "");
-    if (mime == null || !mime.startsWith("image/png")) {
+    final success = await homeProvider.pickImage();
+    if (!success){
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('The file is not PNG'),
-        ),
+        const SnackBar(content: Text('The file is not PNG')),
       );
-      return;
     }
+  }
 
-    if (pickedFile != null) {
-      ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
+  void _addtEXt(String text){
+    _chunk = PngChunkService.addtEXt(
+      chunk: _chunk!,
+      text: text
+    );
+    setState(() {
+
+    });
+
   }
 
   @override
@@ -77,13 +77,13 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const SizedBox(height: 10),
-            PickedImage(image: _image),
+            const PickedImage(),
             const SizedBox(height: 20),
             PickImageButton(onPressed: _pickImage),
             const SizedBox(height: 40),
-            MetaDataInput(onComplete: (input){}),
+            MetaDataInput(onComplete: (input) => _addtEXt),
             const SizedBox(height: 10),
-            MetaDataOutput(metadata: _metadata),
+            MetaDataOutput(metadata: "${_chunk}"),
           ],
         )
       )
