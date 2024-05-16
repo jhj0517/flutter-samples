@@ -25,9 +25,9 @@ class PngChunkService{
     if (tEXt.isEmpty){
       return null;
     }
-
-    final decoded = utf8.decode(tEXt[0]["data"]);
-    tEXt[0]["data"] = decoded;
+    for (var item in tEXt){
+      item["data"] = utf8.decode(item["data"]);
+    }
     return tEXt;
   }
 
