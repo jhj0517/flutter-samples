@@ -16,9 +16,6 @@ class HomeProvider extends ChangeNotifier {
   List<Map<String, dynamic>>? _chunks;
   List<Map<String, dynamic>>? get chunks => _chunks;
 
-  List<Map<String, dynamic>>? _metadata;
-  List<Map<String, dynamic>>? get metadata => _metadata;
-
   Future<bool> pickImage() async {
     final pickedFile = await ImageService.pickImage();
 
@@ -33,7 +30,6 @@ class HomeProvider extends ChangeNotifier {
 
       final blob = await ImageService.toBLOB(imageFile: pickedFile);
       _chunks = PngChunkService.read(BLOB: blob);
-      _metadata = PngChunkService.gettEXt(BLOB: blob);
       notifyListeners();
       return true;
     }
