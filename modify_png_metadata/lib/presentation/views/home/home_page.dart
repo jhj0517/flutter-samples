@@ -31,8 +31,6 @@ enum PossibleMimes{
 class _MyHomePageState extends State<MyHomePage> {
 
   late HomeProvider homeProvider;
-  File? _image;
-  List<Map<String, dynamic>>? _chunk;
 
   @override
   void initState() {
@@ -50,21 +48,29 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final success = await homeProvider.pickImage();
     if (!success){
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('The file is not PNG')),
-      );
+      _showSnackBar("The file is not PNG");
     }
   }
 
-  void _addtEXt(String text){
-    _chunk = PngChunkService.addtEXt(
-      chunk: _chunk!,
-      text: text
+  Future<void> _addtEXtMetaData(String text) async {
+    debugPrint("text: $text");
+    if (homeProvider.image == null) {
+      _showSnackBar('Select the image first');
+      return;
+    }
+
+    final success = await homeProvider.saveWithMetaData(
+      chunk: homeProvider.metadata,
+      text: text,
     );
-    setState(() {
 
-    });
+    _showSnackBar(success ? 'Image has been saved with new metadata' : 'Failed to save image with new metadata');
+  }
 
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
   }
 
   @override
@@ -81,9 +87,9 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 20),
             PickImageButton(onPressed: _pickImage),
             const SizedBox(height: 40),
-            MetaDataInput(onComplete: (input) => _addtEXt),
+            MetaDataInput(onComplete: (input) => _addtEXtMetaData(input)),
             const SizedBox(height: 10),
-            MetaDataOutput(metadata: "${_chunk}"),
+            const MetaDataOutput(),
           ],
         )
       )
