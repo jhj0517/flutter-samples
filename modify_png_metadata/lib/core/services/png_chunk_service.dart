@@ -18,13 +18,8 @@ class PngChunkService{
   }
 
   static List<Map<String, dynamic>>? gettEXt({
-    required Uint8List BLOB
+    required List<Map<String, dynamic>> chunk
   }) {
-    final chunk = read(BLOB: BLOB);
-    if (chunk==null){
-      return null;
-    }
-
     return chunk.where((c) => c["name"]=="tEXt").toList();
   }
 
