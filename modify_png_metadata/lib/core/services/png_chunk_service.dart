@@ -25,12 +25,16 @@ class PngChunkService{
     if (tEXt.isEmpty){
       return null;
     }
-    for (var item in tEXt){
-      String decoded = utf8.decode(item["data"]);
 
-      item["keyword"] = decoded.substring(0, decoded.indexOf('\0'));
-      item["data"] = decoded.substring(decoded.indexOf('\0') + 1);
+    for (var item in tEXt){
+      List<int> chunk = item['data'];
+      final keyword = chunk.sublist(0, chunk.indexOf(0));
+      final data = chunk.sublist(chunk.indexOf(0)+1);
+
+      item["keyword"] = utf8.decode(keyword);
+      item["data"] = utf8.decode(data);
     }
+
     return tEXt;
   }
 
