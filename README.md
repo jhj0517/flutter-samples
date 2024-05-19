@@ -33,3 +33,9 @@
 
   </details>
 
+- [modify_png_metadata](https://github.com/jhj0517/flutter-samples/tree/master/modify_png_metadata) : 플러터에서 PNG 이미지 파일의 메타데이터 (`tEXt` 타입 Chunk 데이터) 를 수정합니다.
+  <details> <summary>GIF</summary> 
+   
+  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/18c8e29f-f074-42f6-8514-e16759edceaa)
+
+  </details>
