@@ -29,4 +29,10 @@ Collection of Flutter sample projects. Each project folder contains a link to a 
   ![demo](https://github.com/jhj0517/FlutterPractices/assets/97279763/7f331608-1ce8-4e9e-b271-a672f14dd2e4)
 
   </details>
+  
+- [modify_png_metadata](https://github.com/jhj0517/flutter-samples/tree/master/modify_png_metadata) : Edit PNG image metadata (`tEXt` type chunk data) in Flutter.
+  <details> <summary>GIF</summary> 
+   
+  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/18c8e29f-f074-42f6-8514-e16759edceaa)
 
+  </details>
