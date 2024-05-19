@@ -26,7 +26,10 @@ class PngChunkService{
       return null;
     }
     for (var item in tEXt){
-      item["data"] = utf8.decode(item["data"]);
+      String decoded = utf8.decode(item["data"]);
+
+      item["keyword"] = decoded.substring(0, decoded.indexOf('\0'));
+      item["data"] = decoded.substring(decoded.indexOf('\0') + 1);
     }
     return tEXt;
   }
@@ -34,12 +37,13 @@ class PngChunkService{
 
   static List<Map<String, dynamic>> addtEXt({
     required List<Map<String, dynamic>> chunk,
+    required String keyword,
     required String text,
   }) {
-    List<int> newData = [...utf8.encode(text)];
+    List<int> tEXtData = [...utf8.encode(keyword), 0, ...utf8.encode(text)];
 
     Uint8List chunkType = Uint8List.fromList(utf8.encode('tEXt'));
-    Uint8List dataBytes = Uint8List.fromList(newData);
+    Uint8List dataBytes = Uint8List.fromList(tEXtData);
     Uint8List crcInput = Uint8List.fromList([...chunkType, ...dataBytes]);
     int crc = Crc32.getCrc32(crcInput);
 

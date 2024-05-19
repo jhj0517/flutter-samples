@@ -44,7 +44,7 @@ class HomeProvider extends ChangeNotifier {
       return false;
     }
 
-    final newChunk = PngChunkService.addtEXt(chunk: chunks!, text: text);
+    final newChunk = PngChunkService.addtEXt(chunk: chunks!, keyword: "Modify PNG Metadata", text: text);
     await ImageService.saveWithChunk(chunk: newChunk);
     notifyListeners();
     return true;
