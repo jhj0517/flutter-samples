@@ -22,7 +22,7 @@ class MetaDataInputState extends State<MetaDataInput> {
         TextField(
           controller: _controller,
           decoration: InputDecoration(
-            labelText: 'Enter metadata',
+            labelText: 'Enter tEXt metadata',
             suffixIcon: IconButton(
               icon: const Icon(Icons.send),
               onPressed: () {
