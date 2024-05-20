@@ -40,22 +40,24 @@ class MetaDataOutput extends StatelessWidget {
             rows: metadata.map((chunk) {
               final type = chunk['name'];
               final data = chunk['data'];
-              final length = data.length.toString();
+              final length = data.length;
 
               String displayData;
               switch(type){
-                case 'IDAT':
-                  displayData = '[${data.take(10)} .... ]';
                 case 'tEXt':
                   final tEXt = PngChunkService.gettEXt(chunk: metadata)![0];
                   displayData = "keyword : ${tEXt['keyword']}\nText String : ${tEXt['data']}";
                 default:
-                  displayData = data.toString();
+                  if (length>10) {
+                    displayData =  '[${data.take(10).join(", ")} .... ]';
+                  } else {
+                    displayData = data.toString();
+                  }
               }
 
               return DataRow(cells: [
                 DataCell(Text(type)),
-                DataCell(Text(length)),
+                DataCell(Text(length.toString())),
                 DataCell(Text(displayData)),
               ]);
             }).toList(),
