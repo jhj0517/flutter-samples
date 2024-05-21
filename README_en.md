@@ -1,4 +1,4 @@
-# FlutterPractices
+# Flutter Samples
 Collection of Flutter sample projects. Each project folder contains a link to a Medium post.
 
 ### Samples
@@ -30,9 +30,9 @@ Collection of Flutter sample projects. Each project folder contains a link to a 
 
   </details>
   
-- [modify_png_metadata](https://github.com/jhj0517/flutter-samples/tree/master/modify_png_metadata) : Edit PNG image metadata (`tEXt` type chunk data) in Flutter.
+- [modify_png_metadata](https://github.com/jhj0517/flutter-samples/tree/master/modify_png_metadata) : Edit PNG image metadata (`tEXt` type chunk data).
   <details> <summary>GIF</summary> 
    
-  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/18c8e29f-f074-42f6-8514-e16759edceaa)
+  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/a9862e0c-84dc-4e67-8d5f-229386132bb9)
 
   </details>
