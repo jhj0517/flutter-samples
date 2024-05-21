@@ -1,5 +1,5 @@
 ### Languages
-[한국어](https://github.com/jhj0517/FlutterPractices/blob/master/README.md),  [English](https://github.com/jhj0517/FlutterPractices/blob/master/README_en.md)
+한국어,  [English](https://github.com/jhj0517/FlutterPractices/blob/master/README_en.md)
 
 # FlutterPractices
 플러터 샘플 프로젝트들입니다. 각 프로젝트 폴더 안에 미디엄 포스트 링크가 함께 있습니다.
@@ -33,9 +33,9 @@
 
   </details>
 
-- [modify_png_metadata](https://github.com/jhj0517/flutter-samples/tree/master/modify_png_metadata) : 플러터에서 PNG 이미지 파일의 메타데이터 (`tEXt` 타입 Chunk 데이터) 를 수정합니다.
+- [modify_png_metadata](https://github.com/jhj0517/flutter-samples/tree/master/modify_png_metadata) : PNG 이미지 파일에 메타데이터 (`tEXt` 타입 Chunk 데이터) 를 추가하는 샘플입니다.
   <details> <summary>GIF</summary> 
    
-  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/18c8e29f-f074-42f6-8514-e16759edceaa)
+  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/a9862e0c-84dc-4e67-8d5f-229386132bb9)
 
   </details>
