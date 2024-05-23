@@ -1,0 +1,5 @@
+put your images here.
+You can use it like
+```
+Image.asset('assets/images/logo.png'),
+```

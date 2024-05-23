@@ -1,0 +1,56 @@
+name: compress_image
+description: Sample for how to compress the image in Flutter
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  path: ^1.9.0
+
+  # Image
+  path_provider: ^2.0.14 # for temp directory
+  image_picker: ^1.1.1
+  image_gallery_saver: ^2.0.3
+  flutter_image_compress: ^2.3.0
+
+  # Provider Pattern
+  provider: ^6.0.5
+
+  # Local DB
+  sqflite: ^2.3.3
+  shared_preferences: ^2.2.3
+  flutter_dotenv: ^5.1.0
+
+  # Dependency Injection
+  get_it: ^7.7.0
+
+  # Localization
+  intl: ^0.18.1
+  flutter_localizations:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+  # Network
+  retrofit_generator: '>=7.0.0 <8.0.0'
+  build_runner: '>=2.3.0 <4.0.0'
+  json_serializable: ^6.6.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - .env
+flutter_intl:
+  enabled: true
