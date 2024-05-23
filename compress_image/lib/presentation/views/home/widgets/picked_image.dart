@@ -15,14 +15,14 @@ class PickedImage extends StatelessWidget {
     final image = context.select<HomeProvider, File?>((provider) => provider.image);
     if (image == null) {
       return Container(
-        height: 400,
-        width: 400,
+        height: 300,
+        width: 300,
         decoration: BoxDecoration(
           color: Colors.grey[300],
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: Colors.grey, width: 2),
         ),
-        child: const Icon(Icons.image, size: 400, color: Colors.grey),
+        child: const Icon(Icons.image, size: 300, color: Colors.grey),
       );
     }
 
@@ -31,8 +31,8 @@ class PickedImage extends StatelessWidget {
       child: Image.file(
         image,
         fit: BoxFit.cover,
-        height: 400,
-        width: 400,
+        height: 300,
+        width: 300,
       ),
     );
   }
