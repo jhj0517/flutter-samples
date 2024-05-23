@@ -1,12 +1,12 @@
+import 'package:compress_image/presentation/views/home/widgets/compress_slider.dart';
+import 'package:compress_image/presentation/views/home/widgets/image_capacity.dart';
 import 'package:flutter/material.dart';
-import 'package:modify_png_metadata/presentation/views/home/widgets/meta_data_output.dart';
 import 'package:provider/provider.dart';
 
 import '../../providers/providers.dart';
 import '../widgets/common/common.dart';
 import 'widgets/picked_image.dart';
-import 'widgets/pick_image_button.dart';
-import 'widgets/meta_data_input.dart';
+import 'widgets/custom_button.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -35,18 +35,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
     final success = await homeProvider.pickImage();
     if (!success){
-      _showSnackBar("The file is not PNG");
+      _showSnackBar("Failed to pick image");
     }
   }
 
-  Future<void> _addtEXtMetaData(String text) async {
-    if (homeProvider.image == null) {
-      _showSnackBar('Select the image first');
-      return;
-    }
+  Future<void> _compressImage() async{
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
 
-    final success = await homeProvider.saveWithMetaData(text: text);
-    _showSnackBar(success ? 'Image has been saved with new metadata' : 'Failed to save image with new metadata');
+    final success = await homeProvider.compressImage();
+
+    if (success){
+      _showSnackBar("New compressed image has been saved in the Gallery.");
+    } else {
+      _showSnackBar("No image is selected");
+    }
   }
 
   void _showSnackBar(String message) {
@@ -58,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NormalAppBar(title: "Modify PNG Metadata"),
+      appBar: const NormalAppBar(title: "Compress Image"),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -67,11 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 50),
             const PickedImage(),
             const SizedBox(height: 20),
-            PickImageButton(onPressed: _pickImage),
+            CustomButton(text: "Pick Image", onPressed: _pickImage),
             const SizedBox(height: 20),
-            MetaDataInput(onComplete: (input) => _addtEXtMetaData(input)),
+            const ImageCapacity(),
             const SizedBox(height: 20),
-            const MetaDataOutput(),
+            const CompressSlider(),
+            const SizedBox(height: 20),
+            CustomButton(text: "Compress", onPressed: _compressImage, color: Colors.amber)
           ],
         )
       )
