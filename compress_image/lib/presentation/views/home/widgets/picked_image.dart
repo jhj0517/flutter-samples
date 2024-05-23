@@ -22,7 +22,7 @@ class PickedImage extends StatelessWidget {
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: Colors.grey, width: 2),
         ),
-        child: const Icon(Icons.image, size: 300, color: Colors.grey),
+        child: const Icon(Icons.image, size: 100, color: Colors.grey),
       );
     }
 
