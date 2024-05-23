@@ -4,7 +4,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
-import 'package:png_chunks_encode/png_chunks_encode.dart' as pngEncode;
+import 'package:flutter_image_compress/flutter_image_compress.dart';
 
 class ImageService{
 
@@ -37,15 +37,22 @@ class ImageService{
     );
   }
 
-  static Future<void> saveWithChunk({
-    required List<Map<String, dynamic>> chunk,
+  static Future<XFile> compressImage({
+    required File imageFile,
+    double quality=60,
   }) async {
-    final newBuffer = pngEncode.encodeChunks(chunk);
-    final file = File(p.join(Directory.systemTemp.path, 'tempimage.png'));
-    await file.create();
-    await file.writeAsBytes(newBuffer);
+    final String targetPath = p.join(Directory.systemTemp.path, 'tempimage.${CompressFormat.jpeg.name}');
+    final XFile? compressedImage = await FlutterImageCompress.compressAndGetFile(
+      imageFile.path,
+      targetPath,
+      quality: quality.toInt(),
+    );
 
-    await saveToGallery(filePath: file.path);
+    if (compressedImage==null){
+      throw ("Failed to compress the image");
+    }
+
+    return compressedImage;
   }
 
 }
