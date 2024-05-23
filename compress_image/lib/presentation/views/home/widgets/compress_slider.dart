@@ -13,7 +13,7 @@ class CompressSlider extends StatelessWidget {
 
     return Column(
       children: [
-        Text("Image Quality : $imageQuality}"),
+        Text("Image Quality : ${imageQuality.toInt()}"),
         Slider(
           value: imageQuality,
           min: 0,
