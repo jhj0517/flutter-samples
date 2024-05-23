@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class PickImageButton extends StatelessWidget {
-  const PickImageButton({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
+    required this.text,
     required this.onPressed
   });
 
+  final String text;
   final Future<void> Function() onPressed;
 
   @override
@@ -24,9 +26,9 @@ class PickImageButton extends StatelessWidget {
           color: Colors.white
         ),
       ),
-      child: const Text(
-        'Pick Image',
-        style: TextStyle(
+      child: Text(
+        text,
+        style: const TextStyle(
           color: Colors.white
         ),
       ),
