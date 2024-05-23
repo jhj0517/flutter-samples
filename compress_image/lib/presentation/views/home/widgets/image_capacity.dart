@@ -15,13 +15,13 @@ class ImageCapacity extends StatelessWidget {
     String displaySize;
     switch(imageSize){
       case null:
-        displaySize = "No image is selected";
+        displaySize = "No image is selected yet";
       case >= 1024 && < 1024*1024:
         displaySize = "Size: ${(imageSize / (1024)).toStringAsFixed(2)} KB";
       case >= 1024*1024:
         displaySize = "Size: ${(imageSize / (1024 * 1024)).toStringAsFixed(2)} MB";
       default:
-       displaySize = "No image is selected";
+       displaySize = "No image is selected yet";
     }
 
     return Text(
