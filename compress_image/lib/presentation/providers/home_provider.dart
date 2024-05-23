@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:mime/mime.dart';
 
 import 'package:compress_image/core/services/image_service.dart';
 
