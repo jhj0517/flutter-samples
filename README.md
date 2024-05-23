@@ -39,3 +39,10 @@
   ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/a9862e0c-84dc-4e67-8d5f-229386132bb9)
 
   </details>
+
+- [compress_image](https://github.com/jhj0517/flutter-samples/tree/master/compress_image) : `flutter_image_compress` 패키지를 활용하여 이미지를 압축하는 샘플입니다. ( 50%로 압축시 **2MB -> 0.3MB** 효율 ) 
+  <details> <summary>GIF</summary> 
+   
+  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/fac91865-b926-4ef8-9c08-76f5d95976f8)
+
+  </details>  
