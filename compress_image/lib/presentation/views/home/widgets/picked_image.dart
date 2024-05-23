@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:modify_png_metadata/presentation/providers/home_provider.dart';
 import 'package:provider/provider.dart';
+
+import 'package:compress_image/presentation/providers/home_provider.dart';
 
 class PickedImage extends StatelessWidget {
   const PickedImage({
@@ -14,14 +15,14 @@ class PickedImage extends StatelessWidget {
     final image = context.select<HomeProvider, File?>((provider) => provider.image);
     if (image == null) {
       return Container(
-        height: 200,
-        width: 200,
+        height: 400,
+        width: 400,
         decoration: BoxDecoration(
           color: Colors.grey[300],
           borderRadius: BorderRadius.circular(12),
           border: Border.all(color: Colors.grey, width: 2),
         ),
-        child: const Icon(Icons.image, size: 50, color: Colors.grey),
+        child: const Icon(Icons.image, size: 400, color: Colors.grey),
       );
     }
 
@@ -30,8 +31,8 @@ class PickedImage extends StatelessWidget {
       child: Image.file(
         image,
         fit: BoxFit.cover,
-        height: 200,
-        width: 200,
+        height: 400,
+        width: 400,
       ),
     );
   }
