@@ -36,3 +36,10 @@ Collection of Flutter sample projects. Each project folder contains a link to a 
   ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/a9862e0c-84dc-4e67-8d5f-229386132bb9)
 
   </details>
+
+- [compress_image](https://github.com/jhj0517/flutter-samples/tree/master/compress_image) : Compress the image with `flutter_image_compress`. ( When compressed to 50%, **2MB -> 0.3MB** efficiency ) 
+  <details> <summary>GIF</summary> 
+   
+  ![demo](https://github.com/jhj0517/flutter-samples/assets/97279763/8f6385b8-110e-4093-8a57-64f27b3d320e)
+
+  </details>  
