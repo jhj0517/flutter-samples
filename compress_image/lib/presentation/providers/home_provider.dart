@@ -2,8 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:mime/mime.dart';
 
-import 'package:modify_png_metadata/core/services/image_service.dart';
-import 'package:modify_png_metadata/core/services/png_chunk_service.dart';
+import 'package:compress_image/core/services/image_service.dart';
 
 
 class HomeProvider extends ChangeNotifier {
@@ -13,8 +12,11 @@ class HomeProvider extends ChangeNotifier {
   File? _image;
   File? get image => _image;
 
-  List<Map<String, dynamic>>? _chunks;
-  List<Map<String, dynamic>>? get chunks => _chunks;
+  int? _imageSize;
+  int? get imageSize => _imageSize;
+
+  double _imageQuality=100;
+  double get imageQuality => _imageQuality;
 
   Future<bool> pickImage() async {
     final pickedFile = await ImageService.pickImage();
@@ -26,10 +28,7 @@ class HomeProvider extends ChangeNotifier {
 
     if (pickedFile != null) {
       _image = pickedFile;
-      notifyListeners();
-
-      final blob = await ImageService.toBLOB(imageFile: pickedFile);
-      _chunks = PngChunkService.read(BLOB: blob);
+      _imageSize = image!.lengthSync();
       notifyListeners();
       return true;
     }
@@ -37,17 +36,23 @@ class HomeProvider extends ChangeNotifier {
     return false;
   }
 
-  Future<bool> saveWithMetaData({
-    required String text,
-  }) async {
-    if (chunks==null){
+  Future<bool> compressImage() async{
+    if (image==null){
       return false;
     }
 
-    final newChunk = PngChunkService.addtEXt(chunk: chunks!, keyword: "Modify PNG Metadata", text: text);
-    await ImageService.saveWithChunk(chunk: newChunk);
-    notifyListeners();
+    final compressedImage = await ImageService.compressImage(
+      imageFile: image!,
+      quality: imageQuality.toInt()
+    );
+    await ImageService.saveToGallery(filePath: compressedImage.path);
     return true;
   }
+
+  void setImageQuality(double value){
+    _imageQuality = value;
+    notifyListeners();
+  }
+
 
 }

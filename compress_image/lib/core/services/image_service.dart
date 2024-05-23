@@ -39,13 +39,13 @@ class ImageService{
 
   static Future<XFile> compressImage({
     required File imageFile,
-    double quality=60,
+    int quality=60,
   }) async {
     final String targetPath = p.join(Directory.systemTemp.path, 'tempimage.${CompressFormat.jpeg.name}');
     final XFile? compressedImage = await FlutterImageCompress.compressAndGetFile(
       imageFile.path,
       targetPath,
-      quality: quality.toInt(),
+      quality: quality,
     );
 
     if (compressedImage==null){
