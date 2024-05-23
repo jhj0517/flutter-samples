@@ -21,11 +21,6 @@ class HomeProvider extends ChangeNotifier {
   Future<bool> pickImage() async {
     final pickedFile = await ImageService.pickImage();
 
-    final mime = lookupMimeType(pickedFile?.path ?? "");
-    if (mime == null || !mime.startsWith("image/png")) {
-      return false;
-    }
-
     if (pickedFile != null) {
       _image = pickedFile;
       _imageSize = image!.lengthSync();
