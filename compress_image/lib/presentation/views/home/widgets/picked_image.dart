@@ -5,10 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:compress_image/presentation/providers/home_provider.dart';
 
 class PickedImage extends StatelessWidget {
+
   const PickedImage({
     super.key,
   });
-
 
   @override
   Widget build(BuildContext context) {
@@ -36,5 +36,6 @@ class PickedImage extends StatelessWidget {
       ),
     );
   }
+
 }
 
