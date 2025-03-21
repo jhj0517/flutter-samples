@@ -1,5 +1,5 @@
 ### Languages
-[한국어](https://github.com/jhj0517/flutter-samples/blob/master/README_ko.md),  English
+[한국어](https://github.com/jhj0517/flutter-samples/blob/master/README_ko.md),  [English](https://github.com/jhj0517/flutter-samples/edit/master/README.md)
 
 # Flutter Samples
 Collection of Flutter sample projects. Each project folder contains a link to a Medium post.
